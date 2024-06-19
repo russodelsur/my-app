@@ -1,7 +1,14 @@
 import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import usePhotoGallery from './use-photo-gallery';
+import { IonReactRouter } from '@ionic/react-router';
+import { IonApp } from '@ionic/react';
+import { Route, Redirect } from 'react-router-dom';
+import PhotoCapture from './CapturePhotos';
 
 function App() {
+  const { takePhoto } = usePhotoGallery();
   return (
     <div className="App">
       <header className="App-header">
@@ -17,7 +24,16 @@ function App() {
         >
           Learn React
         </a>
+        <button onClick={() => takePhoto()} size="large" style={{margin:"auto"}} >
+          PHOTO MATE
+        </button>
       </header>
+      {/* <IonApp>
+      <IonReactRouter>
+        <Route path="/capture" component={PhotoCapture} exact />
+        <Redirect exact from="/" to="/capture" />
+      </IonReactRouter>
+    </IonApp> */}
     </div>
   );
 }
